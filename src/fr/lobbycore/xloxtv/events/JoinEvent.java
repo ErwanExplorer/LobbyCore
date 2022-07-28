@@ -27,6 +27,13 @@ public class JoinEvent implements Listener {
     public void onJoin(PlayerJoinEvent e) {
             Player p = e.getPlayer();
 
+            if(p.hasPermission("lobby.join")) {
+                e.setJoinMessage("§c" + p.getName() + " §cviens d'arriver brusquement sur le lobby");
+            }
+            else {
+                e.setJoinMessage("§b" + p.getName() + " §ea rejoind le Lobby");
+            }
+
             setPlayer(p);
             setScoreboard(p);
            // setItemStack(p);
@@ -36,6 +43,13 @@ public class JoinEvent implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         Player p = e.getPlayer();
+        if(p.hasPermission("lobby.join")) {
+            e.setQuitMessage("§c" + p.getName() + " §cviens de partir brusquement sur le lobby");
+        }
+        else {
+            e.setQuitMessage("§b" + p.getName() + " §ea quitter le Lobby");
+        }
+
 
     }
 
